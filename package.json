@@ -3,7 +3,8 @@
 	"version": "1.0.0",
 	"type": "module",
 	"scripts": {
-		"start": "ts-node --esm ./index.ts"
+		"start": "ts-node --esm ./index.ts",
+		"format": "prettier --write --cache ."
 	},
 	"devDependencies": {
 		"@types/koa": "^2.13.5",
