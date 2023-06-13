@@ -1,7 +1,7 @@
 import Koa from "koa";
+import { z } from "zod";
 import cors from "@koa/cors";
 import Router from "@koa/router";
-import { z, ZodError } from "zod";
 
 const rootRequestSchema = z.object({
 	pageSize: z.string().transform((pageSize) => {
@@ -37,7 +37,7 @@ router.get("/", (ctx) => {
 		const request = rootRequestSchema.parse(ctx.query);
 		ctx.body = request;
 	} catch (err) {
-		if (err instanceof ZodError) {
+		if (err instanceof z.ZodError) {
 			for (const { path, message } of err.errors) {
 				console.error({ [path.join(".")]: message });
 			}
